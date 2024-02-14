@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public float movespeed;
+    public float jumpforce;
     private float xInput;
     // Start is called before the first frame update
     void Start()
@@ -17,8 +19,12 @@ public class Player : MonoBehaviour
     {
        
             xInput = Input.GetAxisRaw("Horizontal");
-            rb.velocity = new Vector2 (xInput, rb.velocity.y);
-         
+            rb.velocity = new Vector2 (xInput * movespeed, rb.velocity.y);
+          
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpforce);
+        }
        
     }
 }
