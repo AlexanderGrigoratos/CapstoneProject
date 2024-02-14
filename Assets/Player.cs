@@ -5,11 +5,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animator anim;
 
     [SerializeField] private float movespeed;
     [SerializeField] private float jumpforce;
-   
-    
+
+    [SerializeField] private bool isMoving;
     private float xInput;
 
 
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-       
+       anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -31,6 +32,11 @@ public class Player : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpforce);
         }
+
+
+        isMoving = rb.velocity.x != 0;
+
+        anim.SetBool("isMoving", isMoving);
        
     }
 }
