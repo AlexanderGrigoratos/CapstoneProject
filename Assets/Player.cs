@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
-    public float xInput;
+    public Rigidbody2D rb;
+    private float xInput;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Start was called.");
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
+       
             xInput = Input.GetAxisRaw("Horizontal");
-            Debug.Log("Jump");
-        }
+            rb.velocity = new Vector2 (xInput, rb.velocity.y);
+         
+       
     }
 }
