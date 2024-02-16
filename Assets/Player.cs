@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpforce;
 
     private float xInput;
+
+    private int facingDir = 1;
+    private bool facingRight = true;
 
 
     void Start()
@@ -29,6 +33,7 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R))
             Flip();
 
+        FlipController();
         AnimatorControllers();
 
     }
@@ -63,6 +68,21 @@ public class Player : MonoBehaviour
 
     private void Flip() 
     {
+        facingDir = facingDir * -1;
+        facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
+
+    }
+
+    private void FlipController()
+    {
+        if (rb.velocity.x ! > 0 && !facingRight) 
+        {
+            Flip();
+        }
+        else if (rb.velocity.x < 0 && facingRight)
+        {
+            Flip();
+        }
     }
 }
