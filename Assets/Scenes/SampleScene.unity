@@ -421,7 +421,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movespeed: 5
   jumpforce: 5
-  isMoving: 0
 --- !u!70 &1169040772
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -454,8 +453,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0060830265, y: -0.017674265}
-  m_Size: {x: 0.16486199, y: 0.35360608}
+  m_Offset: {x: -0.0060830265, y: -0.062481407}
+  m_Size: {x: 0.16486199, y: 0.3295635}
   m_Direction: 0
 --- !u!1 &1215672115
 GameObject:
