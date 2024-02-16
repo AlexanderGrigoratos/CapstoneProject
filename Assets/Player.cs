@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
 
         CheckInput();
 
+        if(Input.GetKeyDown(KeyCode.R))
+            Flip();
+
         AnimatorControllers();
 
     }
@@ -56,5 +59,10 @@ public class Player : MonoBehaviour
 
         anim.SetBool("isMoving", isMoving);
 
+    }
+
+    private void Flip() 
+    {
+        transform.Rotate(0, 180, 0);
     }
 }
