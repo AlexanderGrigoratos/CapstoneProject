@@ -10,22 +10,20 @@ public class Player : MonoBehaviour
     [SerializeField] private float movespeed;
     [SerializeField] private float jumpforce;
 
-    [SerializeField] private bool isMoving;
     private float xInput;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
        anim = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
         Movement();
+
         CheckInput();
 
         AnimatorControllers();
@@ -54,7 +52,7 @@ public class Player : MonoBehaviour
 
     private void AnimatorControllers()
     {
-        isMoving = rb.velocity.x != 0;
+       bool isMoving = rb.velocity.x != 0;
 
         anim.SetBool("isMoving", isMoving);
 
