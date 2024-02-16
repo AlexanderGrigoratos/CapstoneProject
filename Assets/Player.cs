@@ -16,6 +16,10 @@ public class Player : MonoBehaviour
     private int facingDir = 1;
     private bool facingRight = true;
 
+    private bool isGrounded;
+    [SerializeField] private float groundCheckDistance;
+    [SerializeField] private LayerMask whatIsGround;
+
 
     void Start()
     {
@@ -30,8 +34,11 @@ public class Player : MonoBehaviour
 
         CheckInput();
 
-        if(Input.GetKeyDown(KeyCode.R))
-            Flip();
+
+
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+
+        Debug.Log(isGrounded);
 
         FlipController();
         AnimatorControllers();
@@ -77,12 +84,13 @@ public class Player : MonoBehaviour
     private void FlipController()
     {
         if (rb.velocity.x ! > 0 && !facingRight) 
-        {
             Flip();
-        }
         else if (rb.velocity.x < 0 && facingRight)
-        {
             Flip();
-        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundCheckDistance));
     }
 }
