@@ -69,7 +69,9 @@ public class Player : MonoBehaviour
 
     private void AnimatorControllers()
     {
-       bool isMoving = rb.velocity.x != 0;
+        bool isMoving = rb.velocity.x != 0;
+
+        anim.SetFloat("yVelocity", rb.velocity.y);
 
         anim.SetBool("isMoving", isMoving);
         anim.SetBool("isGrounded", isGrounded);
