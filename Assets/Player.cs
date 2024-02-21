@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float movespeed;
     [SerializeField] private float jumpforce;
 
+    [Header("Dash info")]
+    [SerializeField] private float dashDuration;
+    [SerializeField] private float dashTime;
+
     private float xInput;
 
     private int facingDir = 1;
@@ -32,9 +36,22 @@ public class Player : MonoBehaviour
     {
 
         Movement();
-
         CheckInput();
         CollisionChecks();
+
+        dashTime -= Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            dashTime = dashDuration;
+        }
+
+
+
+        if(dashTime > 0 ) 
+        {
+            Debug.Log("Dash Ability");
+        }
 
         FlipController();
         AnimatorControllers();
