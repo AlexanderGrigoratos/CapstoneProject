@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpforce;
 
     [Header("Dash info")]
+    [SerializeField] private float dashSpeed;
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashTime;
 
@@ -46,13 +47,6 @@ public class Player : MonoBehaviour
             dashTime = dashDuration;
         }
 
-
-
-        if(dashTime > 0 ) 
-        {
-            Debug.Log("Dash Ability");
-        }
-
         FlipController();
         AnimatorControllers();
 
@@ -75,7 +69,14 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        rb.velocity = new Vector2(xInput * movespeed, rb.velocity.y);
+        if (dashTime > 0)
+        {
+            rb.velocity = new Vector2(xInput * dashSpeed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(xInput * movespeed, rb.velocity.y);
+        }
     }
 
     private void Jump()
@@ -92,7 +93,7 @@ public class Player : MonoBehaviour
 
         anim.SetBool("isMoving", isMoving);
         anim.SetBool("isGrounded", isGrounded);
-
+        anim.SetBool("isDashing", dashTime > 0);
 
     }
 

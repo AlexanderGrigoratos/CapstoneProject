@@ -184,7 +184,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -419,9 +419,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e300ad09106e1a4c9cef0c28eea5ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 5
-  jumpforce: 7
-  dashDuration: 2
+  movespeed: 7
+  jumpforce: 12
+  dashSpeed: 15
+  dashDuration: 0.4
   dashTime: 0
   groundCheckDistance: 0.85
   whatIsGround:
@@ -692,8 +693,8 @@ Transform:
   m_GameObject: {fileID: 1987073611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1201, y: -2.53, z: 0}
-  m_LocalScale: {x: 12.5135355, y: 1, z: 1}
+  m_LocalPosition: {x: 1.2073, y: -3.35, z: 0}
+  m_LocalScale: {x: 17.982769, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 861202751}
