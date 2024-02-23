@@ -424,6 +424,7 @@ MonoBehaviour:
   dashSpeed: 25
   dashDuration: 0.25
   dashCooldown: 1.4
+  comboTime: 1
   groundCheckDistance: 0.85
   whatIsGround:
     serializedVersion: 2

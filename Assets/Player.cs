@@ -17,8 +17,10 @@ public class Player : MonoBehaviour
     private float dashCooldownTimer;
 
     [Header("Attack info")]
+    [SerializeField] private float comboTime = .3f;
     private bool isAttacking;
     private int comboCounter;
+    private float comboTimeWindow;
 
     private float xInput;
 
@@ -46,6 +48,9 @@ public class Player : MonoBehaviour
 
         dashTime -= Time.deltaTime;
         dashCooldownTimer -= Time.deltaTime;
+        comboTimeWindow -= Time.deltaTime;
+
+        
 
 
 
@@ -57,12 +62,14 @@ public class Player : MonoBehaviour
     public void AttackOver() 
     {
         isAttacking = false;
+        comboTimeWindow = comboTime;
 
         comboCounter++;
         if (comboCounter > 2) 
-        {
             comboCounter = 0;
-        }
+
+        
+        
     }
 
     private void CollisionChecks()
@@ -76,7 +83,8 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            isAttacking = true;
+            StartAttackEvent();
+
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -88,6 +96,15 @@ public class Player : MonoBehaviour
         {
             DashAbility();
         }
+    }
+
+    private void StartAttackEvent()
+    {
+        if (comboTimeWindow < 0)
+            comboCounter = 0;
+
+        isAttacking = true;
+        comboTimeWindow = comboTime;
     }
 
     private void DashAbility()
