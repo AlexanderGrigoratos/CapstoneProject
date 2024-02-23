@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
     {
         if (dashTime > 0)
         {
-            rb.velocity = new Vector2(xInput * dashSpeed, rb.velocity.y);
+            rb.velocity = new Vector2(xInput * dashSpeed, 0);
         }
         else
         {

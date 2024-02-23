@@ -421,8 +421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movespeed: 7
   jumpforce: 12
-  dashSpeed: 15
-  dashDuration: 0.4
+  dashSpeed: 25
+  dashDuration: 0.25
   dashTime: 0
   groundCheckDistance: 0.85
   whatIsGround:
