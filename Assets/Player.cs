@@ -100,6 +100,9 @@ public class Player : MonoBehaviour
 
     private void StartAttackEvent()
     {
+        if (!isGrounded)
+            return;
+
         if (comboTimeWindow < 0)
             comboCounter = 0;
 
