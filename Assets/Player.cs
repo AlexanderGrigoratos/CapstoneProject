@@ -54,6 +54,11 @@ public class Player : MonoBehaviour
 
     }
 
+    public void AttackOver() 
+    {
+        isAttacking = false;
+    }
+
     private void CollisionChecks()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
