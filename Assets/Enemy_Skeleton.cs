@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Enemy_Skeleton : Entity
 {
+    [Header("Movement info")]
+    [SerializeField] private float moveSpeed;
+
+
     protected override void Start()
     {
         base.Start();
@@ -12,5 +16,7 @@ public class Enemy_Skeleton : Entity
     protected override void Update()
     {
         base.Update();
+
+        rb.velocity = new Vector2 (moveSpeed * facingDir , rb.velocity.y);
     }
 }
