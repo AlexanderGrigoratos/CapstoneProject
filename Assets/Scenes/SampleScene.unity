@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 1072658028}
-  groundCheckDistance: 0.1
+  groundCheckDistance: 0.2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -575,8 +575,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.009797931, y: -0.14255452}
-  m_Size: {x: 0.51959586, y: 0.91981316}
+  m_Offset: {x: 0.009797931, y: -0.18839109}
+  m_Size: {x: 0.51959586, y: 0.93127227}
   m_Direction: 0
 --- !u!50 &908522057
 Rigidbody2D:
@@ -614,7 +614,7 @@ Transform:
   m_GameObject: {fileID: 908522054}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.29, y: -2.244, z: 0}
+  m_LocalPosition: {x: 9.2, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -777,7 +777,7 @@ Transform:
   m_GameObject: {fileID: 1072658027}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.59, z: 0}
+  m_LocalPosition: {x: 0.328, y: -0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1049,7 +1049,7 @@ Transform:
   m_GameObject: {fileID: 1241885236}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.157, y: 0, z: 0}
+  m_LocalPosition: {x: 0.157, y: -0.063, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -11,11 +11,16 @@ public class Enemy_Skeleton : Entity
     protected override void Start()
     {
         base.Start();
+
+        
     }
 
     protected override void Update()
     {
         base.Update();
+
+        if (!isGrounded)
+            Flip();
 
         rb.velocity = new Vector2 (moveSpeed * facingDir , rb.velocity.y);
     }
