@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player : Entity
 {
-
+    [Header("Movement Info")]
     [SerializeField] private float movespeed;
     [SerializeField] private float jumpforce;
 
@@ -21,12 +21,7 @@ public class Player : Entity
     private int comboCounter;
     private float comboTimeWindow;
 
-    private float xInput;
-
-    
-
-    
-    
+    private float xInput; 
 
     protected override void Start()
     {
@@ -43,9 +38,6 @@ public class Player : Entity
         dashTime -= Time.deltaTime;
         dashCooldownTimer -= Time.deltaTime;
         comboTimeWindow -= Time.deltaTime;
-
-        
-
 
 
         FlipController();
@@ -159,8 +151,4 @@ public class Player : Entity
             Flip();
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - groundCheckDistance));
-    }
 }
