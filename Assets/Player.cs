@@ -1,9 +1,8 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
-    private Rigidbody2D rb;
-    private Animator anim;
 
     [SerializeField] private float movespeed;
     [SerializeField] private float jumpforce;
@@ -32,15 +31,14 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     private bool isGrounded;
 
-
-    void Start()
+    protected override void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
+        base.Start();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
 
         Movement();
         CheckInput();
@@ -102,6 +100,8 @@ public class Player : MonoBehaviour
     {
         if (!isGrounded)
             return;
+
+
 
         if (comboTimeWindow < 0)
             comboCounter = 0;
