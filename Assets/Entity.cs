@@ -27,6 +27,9 @@ public class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
 
+        if (wallCheck == null)
+            wallCheck = transform;
+
     }
 
 
@@ -43,6 +46,7 @@ public class Entity : MonoBehaviour
     protected virtual private void CollisionChecks()
     {
         isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
+        isWallDetected = Physics2D.Raycast(wallCheck.position, Vector2.right, wallCheckDistance * facingDir, whatIsGround);
     }
 
     protected virtual void Flip()

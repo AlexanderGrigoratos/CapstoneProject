@@ -19,7 +19,7 @@ public class Enemy_Skeleton : Entity
     {
         base.Update();
 
-        if (!isGrounded)
+        if (!isGrounded || isWallDetected)
             Flip();
 
         rb.velocity = new Vector2 (moveSpeed * facingDir , rb.velocity.y);
