@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -13,9 +14,13 @@ public class Entity : MonoBehaviour
     [Header("Collision info")]
     [SerializeField] protected Transform groundCheck;
     [SerializeField] protected float groundCheckDistance;
+    [Space]
+    [SerializeField] protected Transform wallCheck;
+    [SerializeField] protected float wallCheckDistance;
     [SerializeField] protected LayerMask whatIsGround;
 
     protected bool isGrounded;
+    protected bool isWallDetected;
 
     protected virtual void Start()
     {
@@ -24,10 +29,14 @@ public class Entity : MonoBehaviour
 
     }
 
+
+
     
     protected virtual void Update()
     {
         CollisionChecks();
+
+        if (isWallDetected) ;
     }
 
 
@@ -47,5 +56,6 @@ public class Entity : MonoBehaviour
     protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
+        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance * facingDir, wallCheck.position.y));
     }
 }
