@@ -27,21 +27,28 @@ public class Enemy_Skeleton : Entity
     {
         base.Update();
 
-        if(isPlayerDetected.distance > 1)
+        if (isPlayerDetected.distance > 1)
         {
-            rb.velocity = new Vector2(moveSpeed * 1.5f* facingDir, rb.velocity.y);
+            rb.velocity = new Vector2(moveSpeed * 1.5f * facingDir, rb.velocity.y);
 
             Debug.Log("I see the player");
+            isAttacking = false;
         }
         else
         {
             Debug.Log("ATTACK!" + isPlayerDetected);
+            isAttacking = true;
         }
 
         if (!isGrounded || isWallDetected)
             Flip();
 
-        rb.velocity = new Vector2 (moveSpeed * facingDir , rb.velocity.y);
+        Movement();
+    }
+
+    private void Movement()
+    {
+        rb.velocity = new Vector2(moveSpeed * facingDir, rb.velocity.y);
     }
 
     protected override void CollisionChecks()
