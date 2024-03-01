@@ -43,7 +43,7 @@ public class Entity : MonoBehaviour
     }
 
 
-    protected virtual private void CollisionChecks()
+    protected virtual void CollisionChecks()
     {
         isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
         isWallDetected = Physics2D.Raycast(wallCheck.position, Vector2.right, wallCheckDistance * facingDir, whatIsGround);
