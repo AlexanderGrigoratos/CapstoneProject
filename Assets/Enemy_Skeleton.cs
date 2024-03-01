@@ -27,17 +27,20 @@ public class Enemy_Skeleton : Entity
     {
         base.Update();
 
-        if (isPlayerDetected.distance > 1)
+        if (isPlayerDetected) 
         {
-            rb.velocity = new Vector2(moveSpeed * 1.5f * facingDir, rb.velocity.y);
+            if (isPlayerDetected.distance > 0.75)
+            {
+                rb.velocity = new Vector2(moveSpeed * 1.5f * facingDir, rb.velocity.y);
 
-            Debug.Log("I see the player");
-            isAttacking = false;
-        }
-        else
-        {
-            Debug.Log("ATTACK!" + isPlayerDetected);
-            isAttacking = true;
+                Debug.Log("I see the player");
+                isAttacking = false;
+            }
+            else
+            {
+                Debug.Log("ATTACK!" + isPlayerDetected.collider.gameObject.name);
+                isAttacking = true;
+            }
         }
 
         if (!isGrounded || isWallDetected)
@@ -48,6 +51,7 @@ public class Enemy_Skeleton : Entity
 
     private void Movement()
     {
+        if (!isAttacking)
         rb.velocity = new Vector2(moveSpeed * facingDir, rb.velocity.y);
     }
 
