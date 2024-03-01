@@ -1,154 +1,43 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player : Entity
+public class Player : MonoBehaviour
 {
-    [Header("Movement Info")]
-    [SerializeField] private float movespeed;
-    [SerializeField] private float jumpforce;
+    #region Components
 
-    [Header("Dash info")]
-    [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashDuration;
-    private float dashTime;
+    public Animator anim {  get; private set; }
 
-    [SerializeField] private float dashCooldown;
-    private float dashCooldownTimer;
-
-    [Header("Attack info")]
-    [SerializeField] private float comboTime = .3f;
-    private bool isAttacking;
-    private int comboCounter;
-    private float comboTimeWindow;
-
-    private float xInput; 
-
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-
-        Movement();
-        CheckInput();
-
-        dashTime -= Time.deltaTime;
-        dashCooldownTimer -= Time.deltaTime;
-        comboTimeWindow -= Time.deltaTime;
+    #endregion
 
 
-        FlipController();
-        AnimatorControllers();
-
-    }
-
-    public void AttackOver() 
-    {
-        isAttacking = false;
-        comboTimeWindow = comboTime;
-
-        comboCounter++;
-        if (comboCounter > 2) 
-            comboCounter = 0;
-
-        
-        
-    }
-
+    #region States
+    public PlayerStateMachine stateMachine { get; private set; }
     
+    public PlayerIdleState idleState { get; private set; }
 
-    private void CheckInput()
+    public PlayerMoveState moveState { get; private set; }
+    #endregion
+
+    private void Awake()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
+        stateMachine = new PlayerStateMachine();
 
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            StartAttackEvent();
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            DashAbility();
-        }
-    }
-
-    private void StartAttackEvent()
-    {
-        if (!isGrounded)
-            return;
-
-
-
-        if (comboTimeWindow < 0)
-            comboCounter = 0;
-
-        isAttacking = true;
-        comboTimeWindow = comboTime;
-    }
-
-    private void DashAbility()
-    {
-        if (dashCooldownTimer < 0 && !isAttacking)
-        {
-            dashCooldownTimer = dashCooldown;
-            dashTime = dashDuration;
-        }
-    }
-
-    private void Movement()
-    {
-        if (isAttacking)
-        {
-            rb.velocity = new Vector2(0, 0);
-        }
-
-        else if (dashTime > 0)
-        {
-            rb.velocity = new Vector2(facingDir * dashSpeed, 0);
-        }
-        else
-        {
-            rb.velocity = new Vector2(xInput * movespeed, rb.velocity.y);
-        }
-    }
-
-    private void Jump()
-    {
-        if (isGrounded)
-            rb.velocity = new Vector2(rb.velocity.x, jumpforce);
-    }
-
-    private void AnimatorControllers()
-    {
-        bool isMoving = rb.velocity.x != 0;
-
-        anim.SetFloat("yVelocity", rb.velocity.y);
-
-        anim.SetBool("isMoving", isMoving);
-        anim.SetBool("isGrounded", isGrounded);
-        anim.SetBool("isDashing", dashTime > 0);
-        anim.SetBool("isAttacking", isAttacking);
-        anim.SetInteger("comboCounter", comboCounter);
+        idleState = new PlayerIdleState(this, stateMachine, "Idle");
+        moveState = new PlayerMoveState(this, stateMachine, "Move");
 
     }
 
-    
 
-    private void FlipController()
+
+    private void Start()
     {
-        if (rb.velocity.x! > 0 && !facingRight)
-            Flip();
-        else if (rb.velocity.x < 0 && facingRight)
-            Flip();
+        anim = GetComponentInChildren<Animator>();
+
+        stateMachine.Initialize(idleState);
     }
 
+    private void Update()
+    {
+        stateMachine.currentState.Update();
+    }
 }
