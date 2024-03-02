@@ -67,6 +67,8 @@ public class Player : MonoBehaviour
     private void Update()
     {
         stateMachine.currentState.Update();
+
+        FlipController();
     }
 
     public void SetVelocity(float _xVelocity, float _yVelocity)
@@ -88,5 +90,13 @@ public class Player : MonoBehaviour
         facingDir = facingDir * -1;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
+    }
+
+    public void FlipController()
+    {
+        if (rb.velocity.x > 0 && !facingRight)
+            Flip();
+        else if(rb.velocity.x < 0 && facingRight)
+            Flip();
     }
 }
