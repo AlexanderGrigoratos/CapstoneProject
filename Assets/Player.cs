@@ -64,10 +64,20 @@ public class Player : MonoBehaviour
         stateMachine.Initialize(idleState);
     }
 
+    public float timer;
+    public float cooldown;
+
+
     private void Update()
     {
         stateMachine.currentState.Update();
 
+        timer -= Time.deltaTime;
+
+        if (timer < 0 && Input.GetKeyDown(KeyCode.R))
+        {
+            timer = cooldown;
+        }
         
     }
 
