@@ -86,5 +86,7 @@ public class Player : MonoBehaviour
     public void Flip()
     {
         facingDir = facingDir * -1;
+        facingRight = !facingRight;
+        transform.Rotate(0, 180, 0);
     }
 }
