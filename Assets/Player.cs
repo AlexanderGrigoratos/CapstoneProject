@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     public PlayerJumpState jumpState { get; private set; }
 
     public PlayerAirState airState { get; private set; }
+
+    public PlayerDashState dashState { get; private set; }
     #endregion
 
 
@@ -50,7 +52,8 @@ public class Player : MonoBehaviour
         idleState = new PlayerIdleState(this, stateMachine, "Idle");
         moveState = new PlayerMoveState(this, stateMachine, "Move");
         jumpState = new PlayerJumpState(this, stateMachine, "Jump");
-        airState  = new PlayerAirState(this, stateMachine, "Jump");
+        airState  = new PlayerAirState(this, stateMachine,  "Jump");
+        dashState = new PlayerDashState(this, stateMachine, "Dash");
 
     }
 
@@ -64,20 +67,10 @@ public class Player : MonoBehaviour
         stateMachine.Initialize(idleState);
     }
 
-    public float timer;
-    public float cooldown;
-
 
     private void Update()
     {
         stateMachine.currentState.Update();
-
-        timer -= Time.deltaTime;
-
-        if (timer < 0 && Input.GetKeyDown(KeyCode.R))
-        {
-            timer = cooldown;
-        }
         
     }
 
