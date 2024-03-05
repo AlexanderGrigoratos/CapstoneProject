@@ -73,7 +73,15 @@ public class Player : MonoBehaviour
     private void Update()
     {
         stateMachine.currentState.Update();
+
+        CheckForsDashInput();
         
+    }
+
+    private void CheckForsDashInput()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift)) 
+            stateMachine.ChangeState(dashState);
     }
 
     public void SetVelocity(float _xVelocity, float _yVelocity)
