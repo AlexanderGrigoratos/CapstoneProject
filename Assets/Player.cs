@@ -8,8 +8,12 @@ public class Player : MonoBehaviour
     [Header("Movement Info")]
     public float moveSpeed = 12f;
     public float jumpForce;
+
+    [Header("Dash Info")]
     public float dashSpeed;
     public float dashDuration;
+    public float dashDir { get; private set; }
+
 
     [Header("Collision Info")]
     [SerializeField] private Transform groundCheck;
@@ -80,8 +84,17 @@ public class Player : MonoBehaviour
 
     private void CheckForsDashInput()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift)) 
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            dashDir = Input.GetAxisRaw("Horizontal");
+
+            if (dashDir == 0)
+                dashDir = facingDir;
+
+
             stateMachine.ChangeState(dashState);
+
+        }
     }
 
     public void SetVelocity(float _xVelocity, float _yVelocity)
