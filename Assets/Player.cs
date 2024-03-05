@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public float jumpForce;
 
     [Header("Dash Info")]
+    [SerializeField] private float dashCoolDown;
+    private float dashUsageTimer;
     public float dashSpeed;
     public float dashDuration;
     public float dashDir { get; private set; }
@@ -84,8 +86,11 @@ public class Player : MonoBehaviour
 
     private void CheckForsDashInput()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        dashUsageTimer -= Time.deltaTime;
+
+        if(Input.GetKeyDown(KeyCode.LeftShift) && dashUsageTimer < 0)
         {
+            dashUsageTimer = dashCoolDown;
             dashDir = Input.GetAxisRaw("Horizontal");
 
             if (dashDir == 0)
