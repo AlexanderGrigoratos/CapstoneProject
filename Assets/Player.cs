@@ -88,13 +88,16 @@ public class Player : MonoBehaviour
     {
         stateMachine.currentState.Update();
 
-        CheckForsDashInput();
+        CheckForDashInput();
         
    
     }
 
-    private void CheckForsDashInput()
+    private void CheckForDashInput()
     {
+        if (IsWallDetected())
+            return;
+
         dashUsageTimer -= Time.deltaTime;
 
         if(Input.GetKeyDown(KeyCode.LeftShift) && dashUsageTimer < 0)
