@@ -661,7 +661,7 @@ Transform:
   m_GameObject: {fileID: 1075221292}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.079, y: -0.104, z: 0}
+  m_LocalPosition: {x: 0.0574, y: -0.104, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -749,9 +749,9 @@ MonoBehaviour:
   dashSpeed: 25
   dashDuration: 0.2
   groundCheck: {fileID: 461825011}
-  groundCheckDistance: 0.175
+  groundCheckDistance: 0.15
   wallCheck: {fileID: 1075221293}
-  wallCheckDistance: 0.2
+  wallCheckDistance: 0.1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -787,8 +787,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.012684503, y: -0.1327489}
-  m_Size: {x: 0.1606916, y: 0.26801503}
+  m_Offset: {x: 0.0013237268, y: -0.1327489}
+  m_Size: {x: 0.13797005, y: 0.26801503}
   m_Direction: 0
 --- !u!1 &1215672115
 GameObject:
