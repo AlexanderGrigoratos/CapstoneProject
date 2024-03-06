@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         jumpState = new PlayerJumpState(this, stateMachine, "Jump");
         airState  = new PlayerAirState(this, stateMachine,  "Jump");
         dashState = new PlayerDashState(this, stateMachine, "Dash");
-        wallSlide = new PlayerWallSlideState(this, stateMachine, "Wall slide");
+        wallSlide = new PlayerWallSlideState(this, stateMachine, "WallSlide");
 
     }
 
@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         stateMachine.Initialize(idleState);
+
     }
 
 
@@ -87,6 +88,7 @@ public class Player : MonoBehaviour
 
         CheckForsDashInput();
         
+        Debug.Log(IsWallDetected());
     }
 
     private void CheckForsDashInput()
@@ -114,6 +116,7 @@ public class Player : MonoBehaviour
     }
 
     public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
+    public bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround);
 
     private void OnDrawGizmos()
     {
