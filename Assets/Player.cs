@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
 
         CheckForsDashInput();
         
-        Debug.Log(IsWallDetected());
+   
     }
 
     private void CheckForsDashInput()

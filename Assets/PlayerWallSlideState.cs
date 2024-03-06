@@ -22,6 +22,13 @@ public class PlayerWallSlideState : PlayerState
     public override void Update()
     {
         base.Update();
-    }
 
+        if (xInput != 0 && player.facingDir != xInput)
+            stateMachine.ChangeState(player.idleState);
+
+        rb.velocity = new Vector2(0, rb.velocity.y * 0.7f);
+
+        if(player.IsGroundDetected())
+            stateMachine.ChangeState(player.idleState);
+    }
 }
