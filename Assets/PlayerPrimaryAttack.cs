@@ -22,6 +22,8 @@ public class PlayerPrimaryAttack : PlayerState
             comboCounter = 0;
 
         player.anim.SetInteger("ComboCounter", comboCounter);
+
+        stateTimer = .1f;
     }
 
     public override void Exit()
