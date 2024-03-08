@@ -1,10 +1,11 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-
+    public bool isBusy {  get; private set; }
     [Header("Movement Info")]
     public float moveSpeed = 12f;
     public float jumpForce;
@@ -96,6 +97,17 @@ public class Player : MonoBehaviour
         CheckForDashInput();
         
    
+    }
+
+    public IEnumerator BusyFor(float _seconds)
+    {
+        isBusy = true;
+        Debug.Log("IS BUSY");
+
+        yield return new WaitForSeconds(_seconds);
+
+        Debug.Log("NOT BUSY");
+        isBusy = false;
     }
 
 
