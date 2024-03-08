@@ -18,10 +18,10 @@ public class PlayerPrimaryAttack : PlayerState
     {
         base.Enter();
 
-        if (comboCounter > 2)
+        if (comboCounter > 2 || Time.time >= lastTimeAttacked + comboWindow)
             comboCounter = 0;
 
-        Debug.Log(comboCounter);
+        player.anim.SetInteger("ComboCounter", comboCounter);
     }
 
     public override void Exit()
@@ -30,7 +30,6 @@ public class PlayerPrimaryAttack : PlayerState
 
         comboCounter++;
         lastTimeAttacked = Time.time;
-        
     }
 
     public override void Update()
