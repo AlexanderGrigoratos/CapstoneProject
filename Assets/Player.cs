@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     [Header("Attack Details")]
-    public float[] attackMovement;
+    public Vector2[] attackMovement;
 
     public bool isBusy {  get; private set; }
     [Header("Movement Info")]
