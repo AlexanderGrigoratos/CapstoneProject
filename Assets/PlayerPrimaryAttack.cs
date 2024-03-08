@@ -23,6 +23,8 @@ public class PlayerPrimaryAttack : PlayerState
 
         player.anim.SetInteger("ComboCounter", comboCounter);
 
+        player.SetVelocity(player.attackMovement[comboCounter] * player.facingDir, rb.velocity.y);
+
         stateTimer = .1f;
     }
 
