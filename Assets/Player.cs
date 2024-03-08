@@ -102,11 +102,9 @@ public class Player : MonoBehaviour
     public IEnumerator BusyFor(float _seconds)
     {
         isBusy = true;
-        Debug.Log("IS BUSY");
 
         yield return new WaitForSeconds(_seconds);
-
-        Debug.Log("NOT BUSY");
+        
         isBusy = false;
     }
 
