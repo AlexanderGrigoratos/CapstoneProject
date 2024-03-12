@@ -14,7 +14,7 @@ public class SkeletonIdleState : EnemyState
     {
         base.Enter();
 
-        stateTimer = 1f;
+        stateTimer = enemy.idleTime;
     }
 
     public override void Exit()

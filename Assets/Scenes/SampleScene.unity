@@ -7097,6 +7097,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  moveSpeed: 1.5
+  idleTime: 2
 --- !u!4 &533944027
 Transform:
   m_ObjectHideFlags: 0
