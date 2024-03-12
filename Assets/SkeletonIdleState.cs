@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonIdleState : MonoBehaviour
+public class SkeletonIdleState : EnemyState
 {
-    // Start is called before the first frame update
-    void Start()
+    private Enemy_Skeleton enemy;
+    public SkeletonIdleState(Enemy _enemyBase, EnemyStateMachine _stateMachine, string _animBoolName, Enemy_Skeleton _enemy) : base(_enemy, _stateMachine, _animBoolName)
     {
-        
+        enemy = _enemy;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Enter()
     {
-        
+        base.Enter();
+
+        stateTimer = 1f;
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (stateTimer < 0)
+            stateMachine.ChangeState(enemy.moveState);
+
     }
 }
