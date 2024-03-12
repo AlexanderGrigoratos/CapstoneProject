@@ -61,7 +61,7 @@ public class Entity : MonoBehaviour
     }
     #endregion
 
-    public void Flip()
+    public virtual void Flip()
     {
         facingDir = facingDir * -1;
         facingRight = !facingRight;
@@ -69,7 +69,7 @@ public class Entity : MonoBehaviour
     }
 
     #region Flip
-    public void FlipController(float _x)
+    public virtual void FlipController(float _x)
     {
         if (_x > 0 && !facingRight)
             Flip();
