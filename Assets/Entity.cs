@@ -40,6 +40,11 @@ public class Entity : MonoBehaviour
 
     }
 
+    public virtual void Damage()
+    {
+        Debug.Log(gameObject.name + " was damaged");
+
+    }
     #region Velocity
 
     public void SetZeroVelocity() => rb.velocity = new Vector2(0, 0);

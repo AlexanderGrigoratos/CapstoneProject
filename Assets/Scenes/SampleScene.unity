@@ -7166,7 +7166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCheck: {fileID: 115825061}
-  attackCheckRadius: 0.37
+  attackCheckRadius: 0.33
   groundCheck: {fileID: 1338070585}
   groundCheckDistance: 0.5
   wallCheck: {fileID: 380593001}
