@@ -27,6 +27,9 @@ public class Clone_Skill_Controller : MonoBehaviour
         if (cloneTimer < 0)
         {
             sr.color = new Color(1, 1, 1, sr.color.a - Time.deltaTime * colorLosingSpeed);
+
+            if (sr.color.a <= 0)
+                Destroy(gameObject);
         }
     }
     public void SetupClone(Transform _newTransform, float _cloneDuration, bool _canAttack)
