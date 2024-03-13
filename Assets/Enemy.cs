@@ -11,6 +11,10 @@ public class Enemy : Entity
 
     [Header("Attack Info")]
     public float attackDistance;
+    public float attackCooldown;
+    [HideInInspector] public float lastTimeAttacked;
+
+
     public EnemyStateMachine stateMachine { get; private set; }
 
     protected override void Awake()

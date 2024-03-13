@@ -7147,6 +7147,8 @@ MonoBehaviour:
   moveSpeed: 1.5
   idleTime: 2
   attackDistance: 0.62
+  attackCooldown: 0.4
+  lastTimeAttacked: 0
 --- !u!4 &533944027
 Transform:
   m_ObjectHideFlags: 0
