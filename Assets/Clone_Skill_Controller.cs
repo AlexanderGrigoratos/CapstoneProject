@@ -9,7 +9,6 @@ public class Clone_Skill_Controller : MonoBehaviour
     private SpriteRenderer sr;
     [SerializeField] private float colorLosingSpeed;
 
-    [SerializeField] private float cloneDuration;
     private float cloneTimer;
 
     private void Awake()
@@ -26,10 +25,10 @@ public class Clone_Skill_Controller : MonoBehaviour
             sr.color = new Color(1, 1, 1, sr.color.a - Time.deltaTime * colorLosingSpeed);
         }
     }
-    public void SetupClone(Transform _newTransform)
+    public void SetupClone(Transform _newTransform, float _cloneDuration)
     {
         transform.position = _newTransform.position;
-        cloneTimer = cloneDuration;
+        cloneTimer = _cloneDuration;
     }
 
 
