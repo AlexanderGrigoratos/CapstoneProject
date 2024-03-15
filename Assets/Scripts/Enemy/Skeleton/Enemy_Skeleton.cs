@@ -35,11 +35,6 @@ public class Enemy_Skeleton : Enemy
     {
         base.Update();
 
-        if(Input.GetKeyDown(KeyCode.U))
-        {
-            stateMachine.ChangeState(stunnedState);
-        }
-
    
     }
 

@@ -46,7 +46,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void Update()
     {
-
+        
     }
 
     public virtual void Damage()
