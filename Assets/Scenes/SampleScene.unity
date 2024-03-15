@@ -5920,6 +5920,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3078818115175025174, guid: faf0021fd1c639d4fa66af6a107f1437, type: 3}
+      propertyPath: bounceSpeed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5240911952583541108, guid: faf0021fd1c639d4fa66af6a107f1437, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.681
