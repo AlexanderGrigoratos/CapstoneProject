@@ -7752,9 +7752,9 @@ MonoBehaviour:
   counterAttackDuration: 0.2
   moveSpeed: 8
   jumpForce: 12
+  swordReturnImpact: 4
   dashSpeed: 25
   dashDuration: 0.2
-  sword: {fileID: 0}
 --- !u!70 &1169040772
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -8651,6 +8651,10 @@ PrefabInstance:
     - target: {fileID: 7116097006771400613, guid: 653a1b2011582ef44acc9adda44c8e67, type: 3}
       propertyPath: m_Name
       value: AimDot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116097006771400613, guid: 653a1b2011582ef44acc9adda44c8e67, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
