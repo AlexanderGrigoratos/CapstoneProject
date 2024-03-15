@@ -7754,6 +7754,7 @@ MonoBehaviour:
   jumpForce: 12
   dashSpeed: 25
   dashDuration: 0.2
+  sword: {fileID: 0}
 --- !u!70 &1169040772
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -8577,7 +8578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   swordPrefab: {fileID: 6061646488715851207, guid: faf0021fd1c639d4fa66af6a107f1437, type: 3}
-  launchForce: {x: 15, y: 20}
+  launchForce: {x: 35, y: 25}
   swordGravity: 4
   numberOfDots: 20
   spaceBetweenDots: 0.07
