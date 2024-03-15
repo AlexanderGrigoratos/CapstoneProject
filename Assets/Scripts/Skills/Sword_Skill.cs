@@ -82,7 +82,7 @@ public class Sword_Skill : Skill
     {
         Vector2 position = (Vector2)player.transform.position + new Vector2(
             AimDirection().normalized.x * launchForce.x,
-            AimDirection().normalized.y + launchForce.y) * t + .5f * (Physics2D.gravity * swordGravity) * (t * t);
+            AimDirection().normalized.y * launchForce.y) * t + .5f * (Physics2D.gravity * swordGravity) * (t * t);
 
         return position;
     }

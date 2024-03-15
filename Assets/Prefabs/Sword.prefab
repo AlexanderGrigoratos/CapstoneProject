@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4888255308937489179}
   - component: {fileID: 8373795429918923080}
   - component: {fileID: 3542361741334224945}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 7943416877006600029}
   - component: {fileID: 6617869973864928066}
   - component: {fileID: 3078818115175025174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.014805198}
