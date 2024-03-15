@@ -34,6 +34,8 @@ public class Sword_Skill_Controller : MonoBehaviour
     private float hitTimer;
     private float hitCooldown;
 
+    private float spinDirection;
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -49,6 +51,8 @@ public class Sword_Skill_Controller : MonoBehaviour
 
         if (pierceAmount <= 0)
             anim.SetBool("Rotation", true);
+
+        spinDirection = Mathf.Clamp(rb.velocity.x, -1, 1);
     }
 
     public void SetupBounce(bool _isBouncing, int _amountOfBounces)
@@ -113,6 +117,8 @@ public class Sword_Skill_Controller : MonoBehaviour
             {
                 spinTimer -= Time.deltaTime;
 
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + spinDirection, transform.position.y), 1.5f * Time.deltaTime);
+
                 if (spinTimer < 0)
                 {
                     isReturning = true;
@@ -174,7 +180,21 @@ public class Sword_Skill_Controller : MonoBehaviour
         if (isReturning)
             return;
 
-        collision.GetComponent<Enemy>()?.Damage();
+
+        if (collision.GetComponent<Enemy>() != null)
+        {
+            Enemy enemy = collision.GetComponent<Enemy>();
+
+
+            enemy.Damage();
+            enemy.StartCoroutine("FreezeTimeFor", .7f);
+
+        }
+
+        
+
+
+
         SetupTargetForBounce(collision);
 
         StuckInto(collision);
