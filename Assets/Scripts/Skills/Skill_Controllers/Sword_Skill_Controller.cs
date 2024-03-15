@@ -13,6 +13,13 @@ public class Sword_Skill_Controller : MonoBehaviour
     private bool canRotate = true;
     private bool isReturning;
 
+
+
+    public bool isBouncing;
+    public int amountOfBounce;
+    public List<Transform> enemyTarget;
+    private int targetIndex;
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -56,6 +63,23 @@ public class Sword_Skill_Controller : MonoBehaviour
     {
         if (isReturning)
             return;
+
+
+
+        if (collision.GetComponent<Enemy>() != null)
+        {
+            if (isBouncing && enemyTarget.Count <= 0)
+            {
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 10);
+
+                foreach (var hit in colliders)
+                {
+                    if (hit.GetComponent<Enemy>() != null)
+                        enemyTarget.Add(hit.transform);
+                }
+            }
+        }
+
 
         anim.SetBool("Rotation", false);
 
