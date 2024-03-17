@@ -53,7 +53,7 @@ public class Entity : MonoBehaviour
     {
         fx.StartCoroutine("FlashFX");
         StartCoroutine("HitKnockBack");
-        Debug.Log(gameObject.name + " was damaged");
+        //Debug.Log(gameObject.name + " was damaged");
 
     }
 
