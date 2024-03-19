@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerBlackholeState : PlayerState
 {
-    private float flyTime = .4f;
+    private float flyTime = .3f;
     private bool skillUsed;
 
+    private float defaultGravity;
 
     public PlayerBlackholeState(Player _player, PlayerStateMachine stateMachine, string _animBoolName) : base(_player, stateMachine, _animBoolName)
     {
@@ -22,6 +23,8 @@ public class PlayerBlackholeState : PlayerState
     {
         base.Enter();
 
+        defaultGravity = player.rb.gravityScale;
+
         skillUsed = false;
         stateTimer = flyTime;
         rb.gravityScale = 0;
@@ -30,6 +33,9 @@ public class PlayerBlackholeState : PlayerState
     public override void Exit()
     {
         base.Exit();
+
+        player.rb.gravityScale = defaultGravity;
+        player.MakeTransparent(false);
     }
 
     public override void Update()
