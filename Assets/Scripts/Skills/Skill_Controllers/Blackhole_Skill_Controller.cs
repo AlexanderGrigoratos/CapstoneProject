@@ -11,13 +11,64 @@ public class Blackhole_Skill_Controller : MonoBehaviour
     public float growSpeed;
     public bool canGrow;
 
-    public List<Transform> targets = new List<Transform>();
+    private bool canAttack;
+    public int amountOfAttacks = 4;
+    public float cloneAttackCooldown = .3f;
+    private float cloneAttackTimer;
+
+    private List<Transform> targets = new List<Transform>();
+    private List<GameObject> createdHotKey = new List<GameObject>();
 
     private void Update()
     {
+        cloneAttackTimer -= Time.deltaTime;
+
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            DestroyHotKeys();
+            canAttack = true;
+        }
+
+        if(cloneAttackTimer < 0 && canAttack)
+        {
+            cloneAttackTimer = cloneAttackCooldown;
+
+            int randomIndex = Random.Range(0, targets.Count);
+
+            float xOffset;
+
+            if (Random.Range(0, 100) > 500)
+                xOffset = 1;
+            else
+                xOffset = -1;
+
+            SkillManager.instance.clone.CreateClone(targets[randomIndex], new Vector3(xOffset, 0));
+            amountOfAttacks--;
+
+            if(amountOfAttacks <= 0)
+            {
+                canAttack = false;
+            }
+        }
+
+
         if (canGrow)
         {
             transform.localScale = Vector2.Lerp(transform.localScale , new Vector2 (maxSize, maxSize), growSpeed * Time.deltaTime);
+        }
+
+    }
+
+    private void DestroyHotKeys()
+    {
+        if(createdHotKey.Count <= 0)
+            return;
+        {
+            for(int i = 0; i < createdHotKey.Count; i++)
+            {
+                Destroy(createdHotKey[i]);
+            }
         }
 
     }
@@ -41,6 +92,7 @@ public class Blackhole_Skill_Controller : MonoBehaviour
         }
 
         GameObject newHotKey = Instantiate(hotKeyPrefab, collision.transform.position + new Vector3(0, 1), Quaternion.identity);
+        createdHotKey.Add(newHotKey);
 
         KeyCode chosenKey = keyCodeList[Random.Range(0, keyCodeList.Count)];
         keyCodeList.Remove(chosenKey);
