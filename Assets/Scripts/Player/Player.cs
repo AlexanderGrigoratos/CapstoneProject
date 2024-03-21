@@ -94,6 +94,9 @@ public class Player : Entity
         stateMachine.currentState.Update();
 
         CheckForDashInput();
+
+        if (Input.GetKeyDown(KeyCode.F))
+            skill.crystal.CanUseSkill();
         
    
     }
