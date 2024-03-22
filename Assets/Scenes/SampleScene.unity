@@ -12940,6 +12940,9 @@ MonoBehaviour:
   clonePrefab: {fileID: 73311443335522751, guid: 2fc329a656c0ea6468fa23e124efdcf5, type: 3}
   cloneDuration: 1.5
   canAttack: 1
+  createCloneOnDashStart: 0
+  createCloneOnDashOver: 0
+  canCreateCloneOnCounterAttack: 1
 --- !u!114 &2091062212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13005,18 +13008,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
-  crystalDuration: 1.5
+  crystalDuration: 5
   crystalPrefab: {fileID: 8135255922362107925, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
-  canExplode: 1
-  canMoveToEnemy: 1
+  cloneInsteadOfCrystal: 1
+  canExplode: 0
+  canMoveToEnemy: 0
   moveSpeed: 4
-  canUseMultiStacks: 1
+  canUseMultiStacks: 0
   amountOfStacks: 3
   multiStackCooldown: 4
-  crystalsLeft:
-  - {fileID: 8135255922362107925, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
-  - {fileID: 8135255922362107925, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
-  - {fileID: 8135255922362107925, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
+  useTimeWindow: 2.5
 --- !u!1001 &6769842022318585444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13028,6 +13029,10 @@ PrefabInstance:
     - target: {fileID: 8135255922362107925, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
       propertyPath: m_Name
       value: Crystal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135255922362107925, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8540515499845023162, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
       propertyPath: m_LocalPosition.x
