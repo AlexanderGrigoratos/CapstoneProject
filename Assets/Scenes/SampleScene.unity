@@ -13010,6 +13010,13 @@ MonoBehaviour:
   canExplode: 1
   canMoveToEnemy: 1
   moveSpeed: 4
+  canUseMultiStacks: 1
+  amountOfStacks: 3
+  multiStackCooldown: 4
+  crystalsLeft:
+  - {fileID: 8135255922362107925, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
+  - {fileID: 8135255922362107925, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
+  - {fileID: 8135255922362107925, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
 --- !u!1001 &6769842022318585444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13021,10 +13028,6 @@ PrefabInstance:
     - target: {fileID: 8135255922362107925, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
       propertyPath: m_Name
       value: Crystal
-      objectReference: {fileID: 0}
-    - target: {fileID: 8135255922362107925, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8540515499845023162, guid: 3c11d67864e7c784f8863d121b8d7056, type: 3}
       propertyPath: m_LocalPosition.x
