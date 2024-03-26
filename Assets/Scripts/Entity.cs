@@ -14,7 +14,8 @@ public class Entity : MonoBehaviour
 
     public SpriteRenderer sr { get; private set; }
     public CharacterStats stats { get; private set; }
-         
+    public CapsuleCollider2D cd { get; private set; }
+
     #endregion
 
     [Header("Knockback Info")]
@@ -30,6 +31,7 @@ public class Entity : MonoBehaviour
     [SerializeField] protected Transform wallCheck;
     [SerializeField] protected float wallCheckDistance;
     [SerializeField] protected LayerMask whatIsGround;
+    
 
 
     public int facingDir { get; private set; } = 1;
@@ -47,6 +49,7 @@ public class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         fx = GetComponent<EntityFX>();
         stats = GetComponent<CharacterStats>();
+        cd = GetComponent<CapsuleCollider2D>();
     }
 
     protected virtual void Update()
@@ -54,11 +57,11 @@ public class Entity : MonoBehaviour
         
     }
 
-    public virtual void Damage()
+    public virtual void DamageEffect()
     {
         fx.StartCoroutine("FlashFX");
         StartCoroutine("HitKnockBack");
-        //Debug.Log(gameObject.name + " was damaged");
+        
 
     }
 
@@ -128,5 +131,10 @@ public class Entity : MonoBehaviour
             sr.color = Color.clear;
         else
             sr.color = Color.white;
+    }
+
+    public virtual void Die()
+    {
+
     }
 }
