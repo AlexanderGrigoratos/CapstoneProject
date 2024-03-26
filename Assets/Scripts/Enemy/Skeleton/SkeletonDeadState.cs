@@ -19,7 +19,7 @@ public class SkeletonDeadState : EnemyState
         enemy.anim.speed = 0;
         enemy.cd.enabled = false;
 
-        stateTimer = .1f;
+        stateTimer = .15f;
     }
 
     public override void Update()
