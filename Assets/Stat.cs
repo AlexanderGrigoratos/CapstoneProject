@@ -22,6 +22,11 @@ public class Stat
         return finalValue;
     }
 
+    public void SetDefaultValue(int value)
+    {
+        baseValue = value;
+    }
+
     public void AddModifier(int _modifier)
     {
         modifiers.Add(_modifier);

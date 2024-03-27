@@ -9827,10 +9827,10 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 10
+    baseValue: 13
     modifiers: 
   critChance:
-    baseValue: 0
+    baseValue: 99
     modifiers: 
   critPower:
     baseValue: 0

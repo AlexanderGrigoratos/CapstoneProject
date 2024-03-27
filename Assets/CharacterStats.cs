@@ -11,7 +11,7 @@ public class CharacterStats : MonoBehaviour
     [Header("Offensive Stats")]
     public Stat damage;
     public Stat critChance;
-    public Stat critPower;
+    public Stat critPower;   //default value 150%
 
     [Header("Defensive Stats")]
     public Stat maxHealth;
@@ -29,6 +29,7 @@ public class CharacterStats : MonoBehaviour
 
     protected virtual void Start()
     {
+        critPower.SetDefaultValue(150);
         currentHealth = maxHealth.GetValue();
     }
 
@@ -38,8 +39,16 @@ public class CharacterStats : MonoBehaviour
             return;
 
         int totalDamage = damage.GetValue() + strength.GetValue();
-        totalDamage = CheckTargetArmor(_targetStats, totalDamage);
 
+        if (CanCrit())
+        {
+            totalDamage = CalculateCritDamage(totalDamage);
+        }
+
+
+
+
+        totalDamage = CheckTargetArmor(_targetStats, totalDamage);
         _targetStats.TakeDamage(totalDamage);
     }
 
@@ -77,5 +86,26 @@ public class CharacterStats : MonoBehaviour
         }
 
         return false;
+    }
+    private bool CanCrit()
+    {
+        int totalCriticalChance = critChance.GetValue() + agility.GetValue();
+
+        if (Random.Range(0, 100) <= totalCriticalChance)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private int CalculateCritDamage(int _damage)
+    {
+        float totalCritPower = (critPower.GetValue() + strength.GetValue()) * .01f;
+        
+
+        float critDamage = _damage * totalCritPower;
+        
+
+        return Mathf.RoundToInt(critDamage);
     }
 }
