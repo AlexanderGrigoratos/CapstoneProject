@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class Crystal_Skill_Controller : MonoBehaviour
 {
     private Animator anim => GetComponent<Animator>();
     private CircleCollider2D cd => GetComponent<CircleCollider2D>();
+    private Player player;
 
     private float crystalExitTimer;
 
@@ -20,8 +18,9 @@ public class Crystal_Skill_Controller : MonoBehaviour
     private Transform closestEnemy;
     [SerializeField] private LayerMask whatIsEnemy;
 
-    public void SetupCrystal(float _crystalDuration, bool _canExplode, bool _canMove, float _moveSpeed, Transform _closestEnemy)
+    public void SetupCrystal(float _crystalDuration, bool _canExplode, bool _canMove, float _moveSpeed, Transform _closestEnemy, Player _player)
     {
+        player = _player;
         crystalExitTimer = _crystalDuration;
         canExplode = _canExplode;
         canMove = _canMove;
@@ -32,10 +31,8 @@ public class Crystal_Skill_Controller : MonoBehaviour
     public void ChooseRandomEnemy()
     {
         float radius = SkillManager.instance.blackhole.GetBlackholeRadius();
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius , whatIsEnemy);
-
-        if (colliders.Length > 0 )
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius, whatIsEnemy);
+        if (colliders.Length > 0)
             closestEnemy = colliders[Random.Range(0, colliders.Length)].transform;
     }
 
@@ -43,37 +40,24 @@ public class Crystal_Skill_Controller : MonoBehaviour
     {
         crystalExitTimer -= Time.deltaTime;
 
-        if (crystalExitTimer < 0)
+        if (crystalExitTimer <= 0)
         {
             FinishCrystal();
-
         }
 
-        if (canMove)
+        if (canMove && closestEnemy != null)
         {
             transform.position = Vector2.MoveTowards(transform.position, closestEnemy.position, moveSpeed * Time.deltaTime);
-
-            if (Vector2.Distance(transform.position, closestEnemy.position) < 0.5)
+            if (Vector2.Distance(transform.position, closestEnemy.position) < 0.5f)
             {
                 FinishCrystal();
                 canMove = false;
-
             }
         }
 
+
         if (canGrow)
             transform.localScale = Vector2.Lerp(transform.localScale, new Vector2((float)1.5, (float)1.5), growSpeed * Time.deltaTime);
-    }
-
-    private void AnimationExplodeEvent()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, cd.radius);
-
-        foreach (var hit in colliders)
-        {
-            if (hit.GetComponent<Enemy>() != null)
-                hit.GetComponent<Enemy>().DamageEffect();
-        }
     }
 
     public void FinishCrystal()
@@ -89,4 +73,24 @@ public class Crystal_Skill_Controller : MonoBehaviour
 
     public void SelfDestroy() => Destroy(gameObject);
 
+
+    private void ApplyDamageToNearbyEnemies()
+    {
+        float damageRadius = 5f;
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, damageRadius, whatIsEnemy);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            CharacterStats enemyStats = enemy.GetComponent<CharacterStats>();
+            if (enemyStats != null)
+            {
+                player.stats.DoMagicalDamage(enemyStats);
+            }
+        }
+    }
+
+
+    public void AnimationExplodeEvent()
+    {
+        ApplyDamageToNearbyEnemies();
+    }
 }

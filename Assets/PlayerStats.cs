@@ -16,7 +16,7 @@ public class PlayerStats : CharacterStats
     {
         base.TakeDamage(_damage);
 
-        player.DamageEffect();
+        
 
     }
 

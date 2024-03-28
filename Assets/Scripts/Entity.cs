@@ -69,13 +69,7 @@ public class Entity : MonoBehaviour
         anim.speed = 1;
     }
 
-    public virtual void DamageEffect()
-    {
-        fx.StartCoroutine("FlashFX");
-        StartCoroutine("HitKnockBack");
-        
-
-    }
+    public virtual void DamageImpact() => StartCoroutine("HitKnockBack");
 
     protected virtual IEnumerator HitKnockBack()
     {
