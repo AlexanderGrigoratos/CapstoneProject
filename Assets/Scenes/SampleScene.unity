@@ -7845,7 +7845,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 1386226497
+  m_SortingLayerID: 352804053
   m_SortingOrder: 19
   m_TargetDisplay: 0
 --- !u!114 &297525439
@@ -10007,6 +10007,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashDuration: 0.2
   hitMat: {fileID: 2100000, guid: 8df2eeb64f0c9064d8a24bd9647728cb, type: 2}
+  chillColor:
+  - {r: 0.31007475, g: 0.89532137, b: 0.9811321, a: 1}
+  - {r: 0.43867922, g: 0.9277833, b: 1, a: 1}
+  igniteColor:
+  - {r: 1, g: 0.19339621, b: 0.19339621, a: 1}
+  - {r: 1, g: 0.3537736, b: 0.3537736, a: 1}
+  shockColor:
+  - {r: 1, g: 0.8901961, b: 0.38431373, a: 1}
+  - {r: 0.94509804, g: 0.8745098, b: 0.54901963, a: 1}
 --- !u!114 &533944031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10064,6 +10073,7 @@ MonoBehaviour:
   isIgnited: 0
   isChilled: 0
   isShocked: 0
+  ailmentsDuration: 4
   currentHealth: 0
 --- !u!70 &533944032
 CapsuleCollider2D:
@@ -10823,8 +10833,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42d6fc64cff77f4c89cd523d6abca2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashDuration: 0.15
+  flashDuration: 0.2
   hitMat: {fileID: 2100000, guid: 8df2eeb64f0c9064d8a24bd9647728cb, type: 2}
+  chillColor:
+  - {r: 0.31007475, g: 0.89532137, b: 0.9811321, a: 1}
+  - {r: 0.43867922, g: 0.9277833, b: 1, a: 1}
+  igniteColor:
+  - {r: 1, g: 0.19339621, b: 0.19339621, a: 1}
+  - {r: 1, g: 0.3537736, b: 0.3537736, a: 1}
+  shockColor:
+  - {r: 1, g: 0.8901961, b: 0.38431373, a: 1}
+  - {r: 0.94509804, g: 0.8745098, b: 0.54901963, a: 1}
 --- !u!114 &1169040774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10871,10 +10890,10 @@ MonoBehaviour:
     baseValue: 1
     modifiers: 
   fireDamage:
-    baseValue: 12
+    baseValue: 0
     modifiers: 
   iceDamage:
-    baseValue: 0
+    baseValue: 2
     modifiers: 
   lightningDamage:
     baseValue: 0
@@ -10882,6 +10901,7 @@ MonoBehaviour:
   isIgnited: 0
   isChilled: 0
   isShocked: 0
+  ailmentsDuration: 4
   currentHealth: 0
 --- !u!1 &1190077139
 GameObject:
