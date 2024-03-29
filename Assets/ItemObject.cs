@@ -1,20 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-    private SpriteRenderer sr;
-
-
     public ItemData itemData;
 
-    private void Start()
-    {
-        sr = GetComponent<SpriteRenderer>();
 
-        sr.sprite = itemData.icon;
+    private void OnValidate()
+    {
+        GetComponent<SpriteRenderer>().sprite = itemData.icon;
+        gameObject.name = "Item Object - " + itemData.itemName;
     }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
