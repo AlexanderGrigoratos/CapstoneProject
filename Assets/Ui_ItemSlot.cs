@@ -24,8 +24,8 @@ public class Ui_ItemSlot : MonoBehaviour
                 itemText.text = "";
             }
         }
-        
+
     }
 
-  
+
 }

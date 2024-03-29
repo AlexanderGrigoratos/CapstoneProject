@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
     public List<InventoryItem> inventoryItems;
     public Dictionary<ItemData, InventoryItem> inventoryDictionary;
 
-    
+
     private void Awake()
     {
         if (instance == null)
@@ -50,5 +50,5 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    
+
 }
