@@ -61,7 +61,25 @@ public class ItemData_Equipment : ItemData
 
     public void RemoveModifiers()
     {
+        PlayerStats playerstats = PlayerManager.instance.player.GetComponent<PlayerStats>();
 
+        playerstats.strength.RemoveModifier(strength);
+        playerstats.agility.RemoveModifier(agility);
+        playerstats.intelligence.RemoveModifier(intelligence);
+        playerstats.vitality.RemoveModifier(vitality);
+
+        playerstats.damage.RemoveModifier(damage);
+        playerstats.critChance.RemoveModifier(critChance);
+        playerstats.critPower.RemoveModifier(critPower);
+
+        playerstats.maxHealth.RemoveModifier(maxHealth);
+        playerstats.armor.RemoveModifier(armor);
+        playerstats.evasion.RemoveModifier(evasion);
+        playerstats.magicResistance.RemoveModifier(magicResistance);
+
+        playerstats.fireDamage.RemoveModifier(fireDamage);
+        playerstats.iceDamage.RemoveModifier(iceDamage);
+        playerstats.lightningDamage.RemoveModifier(lightningDamage);
     }
 
 }
