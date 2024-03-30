@@ -2,14 +2,18 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Ui_ItemSlot : MonoBehaviour
+public class UI_ItemSlot : MonoBehaviour
 {
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemText;
 
     public InventoryItem item;
-    void Start()
+
+    public void UpdateSlot(InventoryItem _newItem)
     {
+        item = _newItem;
+
+        itemImage.color = Color.white;
 
         if (item != null)
         {
@@ -24,8 +28,5 @@ public class Ui_ItemSlot : MonoBehaviour
                 itemText.text = "";
             }
         }
-
     }
-
-
 }
