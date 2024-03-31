@@ -76,7 +76,7 @@ public class Crystal_Skill_Controller : MonoBehaviour
 
     private void ApplyDamageToNearbyEnemies()
     {
-        float damageRadius = 5f;
+        float damageRadius = 0.75f;
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, damageRadius, whatIsEnemy);
         foreach (Collider2D enemy in hitEnemies)
         {
