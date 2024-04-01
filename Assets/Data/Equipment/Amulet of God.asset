@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962066be6845f9d4890bd441c8dfb46a, type: 3}
   m_Name: Amulet of God
   m_EditorClassIdentifier: 
-  itemType: 0
-  itemName: 
-  icon: {fileID: 0}
+  itemType: 1
+  itemName: Amulet of God
+  icon: {fileID: -245851270, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   dropChance: 0
-  equipmentType: 0
-  itemEffects: []
+  equipmentType: 2
+  itemEffects:
+  - {fileID: 11400000, guid: dfe314942a0ba70478b4c0ca23efdf9c, type: 2}
   strength: 0
   agility: 0
   intelligence: 0
@@ -25,11 +26,11 @@ MonoBehaviour:
   damage: 0
   critChance: 0
   critPower: 0
-  maxHealth: 0
+  maxHealth: 20
   armor: 0
   evasion: 0
-  magicResistance: 0
+  magicResistance: 15
   fireDamage: 0
   iceDamage: 0
-  lightningDamage: 0
+  lightningDamage: 10
   craftingMaterials: []

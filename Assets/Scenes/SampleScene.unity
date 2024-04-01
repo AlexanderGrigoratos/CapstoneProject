@@ -13313,7 +13313,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxHealth:
-    baseValue: 100
+    baseValue: 1200
     modifiers: 
   armor:
     baseValue: 0
@@ -13328,10 +13328,10 @@ MonoBehaviour:
     baseValue: 1
     modifiers: 
   iceDamage:
-    baseValue: 0
+    baseValue: 5
     modifiers: 
   lightningDamage:
-    baseValue: 5
+    baseValue: 0
     modifiers: 
   isIgnited: 0
   isChilled: 0
@@ -13486,9 +13486,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dbb1c8e4705ac3d4d9aa84f64fdc2966, type: 2}
   - {fileID: 11400000, guid: dbb1c8e4705ac3d4d9aa84f64fdc2966, type: 2}
   - {fileID: 11400000, guid: d0921354d39b8754fbbf3f4c255e06c5, type: 2}
-  - {fileID: 11400000, guid: f386ca4d810e77649934ea495f4e7062, type: 2}
   - {fileID: 11400000, guid: c50be69e1dc95b948877c3415c8d9c57, type: 2}
-  - {fileID: 11400000, guid: 9d995e5278553ed439514a79f2d8cc42, type: 2}
+  - {fileID: 11400000, guid: f2b13d33d10ad6c4c804cad3ccb2c6e7, type: 2}
+  - {fileID: 11400000, guid: 881e35dcd2584f645a682761e082505b, type: 2}
+  - {fileID: 11400000, guid: 13cef56203bd8e1488c8f59564ea9eb9, type: 2}
+  - {fileID: 11400000, guid: 10012d566033a8347bbfb36595f43101, type: 2}
   equipment: []
   inventory: []
   stash: []
@@ -16835,14 +16837,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
-  swordType: 2
+  swordType: 1
   bounceAmount: 4
   bounceGravity: 1
   bounceSpeed: 15
   pierceAmount: 2
   pierceGravity: 1
   hitCooldown: 0.35
-  maxTravelDistance: 7
+  maxTravelDistance: 5
   spinDuration: 1
   spinGravity: 1
   swordPrefab: {fileID: 6061646488715851207, guid: faf0021fd1c639d4fa66af6a107f1437, type: 3}

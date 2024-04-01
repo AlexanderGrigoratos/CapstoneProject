@@ -283,6 +283,16 @@ public class CharacterStats : MonoBehaviour
 
     #endregion
 
+    public void IncreaseHealthBy(int _amount)
+    {
+        currentHealth += _amount;
+
+        if (currentHealth > GetMaxHealthValue())
+            currentHealth = GetMaxHealthValue();
+
+        if (onHealthChanged != null)
+            onHealthChanged();
+    }
 
     public virtual void TakeDamage(int _damage)
     {
