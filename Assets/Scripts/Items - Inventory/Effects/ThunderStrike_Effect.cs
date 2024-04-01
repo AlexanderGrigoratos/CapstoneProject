@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Thunder Strike Effect", menuName = "Data/Item Effect/Thunder Strike")]
-public class ThunderStrikeEffect : ItemEffect
+public class ThunderStrike_Effect : ItemEffect
 {
     [SerializeField] private GameObject thunderStrikePrefab;
     public override void ExecuteEffect(Transform _enemyPosition)

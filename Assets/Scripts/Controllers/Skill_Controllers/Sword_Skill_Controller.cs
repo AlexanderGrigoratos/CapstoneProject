@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Sword_Skill_Controller : MonoBehaviour
 {
-    
+
     private Animator anim;
     private Rigidbody2D rb;
     private CircleCollider2D cd;
@@ -56,7 +53,7 @@ public class Sword_Skill_Controller : MonoBehaviour
     {
         player = _player;
         freezeTimeDuration = _freezeTimeDuration;
-        returnSpeed= _returnSpeed;
+        returnSpeed = _returnSpeed;
 
         rb.velocity = _dir;
         rb.gravityScale = _gravityScale;
@@ -84,7 +81,7 @@ public class Sword_Skill_Controller : MonoBehaviour
         pierceAmount = _pierceAmount;
     }
 
-    public void SetupSpin(bool _isSpinning, float _maxTravelDistance, float  _spinDuration, float _hitCooldown)
+    public void SetupSpin(bool _isSpinning, float _maxTravelDistance, float _spinDuration, float _hitCooldown)
     {
         isSpinning = _isSpinning;
         maxTravelDistance = _maxTravelDistance;
@@ -216,6 +213,11 @@ public class Sword_Skill_Controller : MonoBehaviour
     {
         player.stats.DoDamage(enemy.GetComponent<CharacterStats>());
         enemy.StartCoroutine("FreezeTimeFor", freezeTimeDuration);
+
+        ItemData_Equipment equippedAmulet = Inventory.instance.GetEquipment(EquipmentType.Amulet);
+
+        if (equippedAmulet != null)
+            equippedAmulet.Effect(enemy.transform);
     }
 
     private void SetupTargetForBounce(Collider2D collision)

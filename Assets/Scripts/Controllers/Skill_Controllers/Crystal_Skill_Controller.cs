@@ -1,3 +1,4 @@
+using System.Xml;
 using UnityEngine;
 
 public class Crystal_Skill_Controller : MonoBehaviour
@@ -84,6 +85,11 @@ public class Crystal_Skill_Controller : MonoBehaviour
             if (enemyStats != null)
             {
                 player.stats.DoMagicalDamage(enemyStats);
+
+                ItemData_Equipment equippedAmulet = Inventory.instance.GetEquipment(EquipmentType.Amulet);
+
+                if (equippedAmulet != null)
+                    equippedAmulet.Effect(enemy.transform);
             }
         }
     }
