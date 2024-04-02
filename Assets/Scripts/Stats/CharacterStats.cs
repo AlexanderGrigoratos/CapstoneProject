@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Search;
+using System.Collections;
 using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
@@ -45,7 +43,7 @@ public class CharacterStats : MonoBehaviour
     private int igniteDamage;
     [SerializeField] private GameObject shockStrikePrefab;
     private int shockDamage;
-   
+
     public int currentHealth;
 
 
@@ -78,11 +76,25 @@ public class CharacterStats : MonoBehaviour
 
         if (shockedTimer < 0)
             isShocked = false;
-        
+
         if (isIgnited)
             ApplyIgniteDamage();
-        
 
+
+    }
+
+    public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify)
+    {
+        StartCoroutine(StartModCoroutine (_modifier, _duration, _statToModify));
+    }
+
+    private IEnumerator StartModCoroutine(int _modifier, float _duration, Stat _statToModify)
+    {
+        _statToModify.AddModifier(_modifier);
+
+        yield return new WaitForSeconds(_duration);
+
+        _statToModify.RemoveModifier(_modifier);
     }
 
     public virtual void DoDamage(CharacterStats _targetStats)
@@ -103,7 +115,7 @@ public class CharacterStats : MonoBehaviour
         totalDamage = CheckTargetArmor(_targetStats, totalDamage);
         _targetStats.TakeDamage(totalDamage);
 
-       //DoMagicalDamage(_targetStats);
+        DoMagicalDamage(_targetStats);
 
     }
 
@@ -173,7 +185,7 @@ public class CharacterStats : MonoBehaviour
         _targetStats.ApplyAilments(canApplyIgnite, canApplyChill, canApplyShock);
     }
 
-    
+
 
     public void ApplyAilments(bool _ignite, bool _chill, bool _shock)
     {
@@ -190,7 +202,7 @@ public class CharacterStats : MonoBehaviour
             fx.IgniteFxFor(ailmentsDuration);
         }
 
-        if(_chill && canApplyChill)
+        if (_chill && canApplyChill)
         {
             isChilled = _chill;
             chilledTimer = ailmentsDuration;
@@ -318,7 +330,7 @@ public class CharacterStats : MonoBehaviour
     {
         isDead = true;
     }
-     
+
     #region Stat Calculations
     private int CheckTargetArmor(CharacterStats _targetStats, int totalDamage)
     {
@@ -327,7 +339,7 @@ public class CharacterStats : MonoBehaviour
         else
             totalDamage -= _targetStats.armor.GetValue();
 
-        
+
         totalDamage = Mathf.Clamp(totalDamage, 0, int.MaxValue);
         return totalDamage;
     }
@@ -365,10 +377,10 @@ public class CharacterStats : MonoBehaviour
     private int CalculateCritDamage(int _damage)
     {
         float totalCritPower = (critPower.GetValue() + strength.GetValue()) * .01f;
-        
+
 
         float critDamage = _damage * totalCritPower;
-        
+
 
         return Mathf.RoundToInt(critDamage);
     }
