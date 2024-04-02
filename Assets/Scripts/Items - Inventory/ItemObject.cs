@@ -26,6 +26,9 @@ public class ItemObject : MonoBehaviour
 
     public void PickUpItem()
     {
+        if (!Inventory.instance.CanAddItem() && itemData.itemType == ItemType.Equipment)
+            return;
+
         Inventory.instance.AddItem(itemData);
         Destroy(gameObject);
     }
