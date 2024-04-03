@@ -27,11 +27,19 @@ MonoBehaviour:
   damage: 0
   critChance: 0
   critPower: 0
-  maxHealth: 50
-  armor: 15
+  maxHealth: 150
+  armor: 30
   evasion: 0
-  magicResistance: 15
+  magicResistance: 20
   fireDamage: 0
   iceDamage: 0
   lightningDamage: 0
-  craftingMaterials: []
+  craftingMaterials:
+  - data: {fileID: 11400000, guid: d0921354d39b8754fbbf3f4c255e06c5, type: 2}
+    stackSize: 15
+  - data: {fileID: 11400000, guid: dbb1c8e4705ac3d4d9aa84f64fdc2966, type: 2}
+    stackSize: 20
+  - data: {fileID: 11400000, guid: a4716d55aadc2db44b573fa2ab83fd02, type: 2}
+    stackSize: 10
+  - data: {fileID: 11400000, guid: edd5033155aa07b4d8152d74c92f21fe, type: 2}
+    stackSize: 2

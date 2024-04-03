@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77438b6f53537b940bc0cd6ed6e38e61, type: 3}
-  m_Name: Flask Heal
+  m_Script: {fileID: 11500000, guid: c4988a22dc2ef5e42938861a12aaefc2, type: 3}
+  m_Name: Solid Blood
   m_EditorClassIdentifier: 
-  healPercent: 0.1
+  itemType: 0
+  itemName: Solid Blood
+  icon: {fileID: -2018494003, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  dropChance: 15

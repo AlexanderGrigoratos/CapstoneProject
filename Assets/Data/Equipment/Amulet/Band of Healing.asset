@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 962066be6845f9d4890bd441c8dfb46a, type: 3}
-  m_Name: Armor Flask
+  m_Name: Band of Healing
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: Armor Flask
-  icon: {fileID: 23200006, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  itemName: Band of Healing
+  icon: {fileID: -878758905, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   dropChance: 0
-  equipmentType: 3
-  itemCooldown: 60
+  equipmentType: 2
+  itemCooldown: 15
   itemEffects:
-  - {fileID: 11400000, guid: eda7fcc74e9c7104392063b1e2622599, type: 2}
-  - {fileID: 11400000, guid: f50be88df47ed9d4692eb52e169a4703, type: 2}
+  - {fileID: 11400000, guid: 2ba77248ce6a7d8489477eb0e7d8aea8, type: 2}
   strength: 0
   agility: 0
   intelligence: 0
@@ -38,7 +37,5 @@ MonoBehaviour:
   craftingMaterials:
   - data: {fileID: 11400000, guid: d0921354d39b8754fbbf3f4c255e06c5, type: 2}
     stackSize: 5
-  - data: {fileID: 11400000, guid: ad3dc0d3d0002f841a43531c415e1019, type: 2}
-    stackSize: 3
-  - data: {fileID: 11400000, guid: a4716d55aadc2db44b573fa2ab83fd02, type: 2}
-    stackSize: 1
+  - data: {fileID: 11400000, guid: edd5033155aa07b4d8152d74c92f21fe, type: 2}
+    stackSize: 2
