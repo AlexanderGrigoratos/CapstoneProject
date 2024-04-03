@@ -20,6 +20,7 @@ MonoBehaviour:
   itemCooldown: 0
   itemEffects:
   - {fileID: 11400000, guid: 8a206c8c4a090614b85a86433d5d507a, type: 2}
+  itemEffectDescription: Restore a little bit of health on hit.
   strength: 0
   agility: 0
   intelligence: 0

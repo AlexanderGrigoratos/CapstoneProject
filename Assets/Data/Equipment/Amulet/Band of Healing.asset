@@ -20,6 +20,7 @@ MonoBehaviour:
   itemCooldown: 15
   itemEffects:
   - {fileID: 11400000, guid: 2ba77248ce6a7d8489477eb0e7d8aea8, type: 2}
+  itemEffectDescription: Heal a little bit of health every 15 seconds.
   strength: 0
   agility: 0
   intelligence: 0

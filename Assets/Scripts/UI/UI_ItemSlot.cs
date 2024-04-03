@@ -69,6 +69,7 @@ public class UI_ItemSlot : MonoBehaviour , IPointerDownHandler, IPointerEnterHan
             return;
 
         ui.itemToolTip.ShowToolTip(item.data as ItemData_Equipment);
+   
     }
 
     public void OnPointerExit(PointerEventData eventData)

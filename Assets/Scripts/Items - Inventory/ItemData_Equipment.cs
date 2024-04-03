@@ -15,10 +15,12 @@ public class ItemData_Equipment : ItemData
 {
     public EquipmentType equipmentType;
 
-
+    [Header("Unique Effect")]
     public float itemCooldown;
     public ItemEffect[] itemEffects;
-
+    [TextArea]
+    public string itemEffectDescription;
+        
 
 
     [Header("Major Stats")]
@@ -134,9 +136,13 @@ public class ItemData_Equipment : ItemData
             }
         }
 
+        if(itemEffectDescription.Length > 0)
+        {
+            sb.AppendLine();
+            sb.Append(itemEffectDescription);
+        }
+
         return sb.ToString();
-
-
     }
 
     private void AddItemDescription (int _value, string _name)

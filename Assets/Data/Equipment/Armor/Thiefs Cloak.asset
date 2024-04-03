@@ -20,6 +20,7 @@ MonoBehaviour:
   itemCooldown: 0
   itemEffects:
   - {fileID: 11400000, guid: d4b30ba0d95218e4b8df08c9c5f06a40, type: 2}
+  itemEffectDescription: Increases evasion per hit.
   strength: 0
   agility: 5
   intelligence: 0

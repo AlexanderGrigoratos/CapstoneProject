@@ -17,8 +17,10 @@ MonoBehaviour:
   icon: {fileID: -245851270, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   dropChance: 0
   equipmentType: 2
+  itemCooldown: 0
   itemEffects:
   - {fileID: 11400000, guid: dfe314942a0ba70478b4c0ca23efdf9c, type: 2}
+  itemEffectDescription: Gives your magic abilities a thunder buff!
   strength: 0
   agility: 0
   intelligence: 0

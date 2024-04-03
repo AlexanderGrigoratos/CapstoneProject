@@ -21,6 +21,8 @@ MonoBehaviour:
   itemEffects:
   - {fileID: 11400000, guid: eda7fcc74e9c7104392063b1e2622599, type: 2}
   - {fileID: 11400000, guid: f50be88df47ed9d4692eb52e169a4703, type: 2}
+  itemEffectDescription: Gives you a big armor buff for a short period whilst restoring
+    a bit of health.
   strength: 0
   agility: 0
   intelligence: 0

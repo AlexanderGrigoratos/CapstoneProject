@@ -20,6 +20,7 @@ MonoBehaviour:
   itemCooldown: 5
   itemEffects:
   - {fileID: 11400000, guid: f13b584688c7c1942b0fd4bc903dea16, type: 2}
+  itemEffectDescription: Freeze enemies when you get lower than 10% health.
   strength: 4
   agility: 0
   intelligence: 0

@@ -20,6 +20,7 @@ MonoBehaviour:
   itemCooldown: 30
   itemEffects:
   - {fileID: 11400000, guid: 876f90accd00a5a44871ce77777671e7, type: 2}
+  itemEffectDescription: Gives a buff to your fire damage.
   strength: 0
   agility: 0
   intelligence: 0

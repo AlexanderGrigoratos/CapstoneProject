@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Ui_SkillTreeSlot : MonoBehaviour
+public class Ui_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    private UI ui;
+    
     [SerializeField] private string skillName;
     [TextArea]
     [SerializeField] private string skillDescription;
+    [SerializeField] private Color lockedSkillColor;
 
     public bool unlocked;
 
     [SerializeField] private Ui_SkillTreeSlot[] shouldBeUnocked;
     [SerializeField] private Ui_SkillTreeSlot[] shouldBeLocked;
 
-    [SerializeField] private Image skillImage;
+    private Image skillImage;
 
     private void OnValidate()
     {
@@ -24,8 +28,9 @@ public class Ui_SkillTreeSlot : MonoBehaviour
     private void Start()
     {
         skillImage = GetComponent<Image>();
+        ui = GetComponentInParent<UI>();    
 
-        skillImage.color = Color.red;
+        skillImage.color = lockedSkillColor;
 
         GetComponent<Button>().onClick.AddListener(() => UnlockSkillSlot());
     }
@@ -52,6 +57,28 @@ public class Ui_SkillTreeSlot : MonoBehaviour
         }
 
         unlocked = true;
-        skillImage.color = Color.green;
+        skillImage.color = Color.white;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ui.skillToolTip.ShowToolTip(skillDescription, skillName);
+
+        Vector2 mousePosition = Input.mousePosition;
+
+        float xOffset = 0;
+
+        if (mousePosition.x > 600)
+            xOffset = -150;
+        else
+            xOffset = 150;
+
+        ui.skillToolTip.transform.position = new Vector2(mousePosition.x + xOffset, mousePosition.y + 150);
+
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ui.skillToolTip.HideToolTip();
     }
 }

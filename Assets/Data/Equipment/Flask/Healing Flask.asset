@@ -20,6 +20,7 @@ MonoBehaviour:
   itemCooldown: 15
   itemEffects:
   - {fileID: 11400000, guid: f50be88df47ed9d4692eb52e169a4703, type: 2}
+  itemEffectDescription: Restore some of your health.
   strength: 0
   agility: 0
   intelligence: 0

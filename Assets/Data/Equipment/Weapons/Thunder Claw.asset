@@ -20,6 +20,7 @@ MonoBehaviour:
   itemCooldown: 0
   itemEffects:
   - {fileID: 11400000, guid: dfe314942a0ba70478b4c0ca23efdf9c, type: 2}
+  itemEffectDescription: Gives thunder damage and allows you to shock nearby enemies.
   strength: 0
   agility: 0
   intelligence: 0
