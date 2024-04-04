@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_HealthBar : MonoBehaviour
+public class EnemyHealthBar_UI : MonoBehaviour
 {
     [SerializeField] private Entity entity;
     [SerializeField] private CharacterStats myStats;
@@ -13,6 +13,7 @@ public class UI_HealthBar : MonoBehaviour
     {
         myTransform = GetComponent<RectTransform>();
         slider = GetComponentInChildren<Slider>();
+        entity.onFlipped += FlipUI;
         myStats.onHealthChanged += UpdateHealthUI;
         UpdateHealthUI();
     }
@@ -28,8 +29,14 @@ public class UI_HealthBar : MonoBehaviour
         slider.value = myStats.currentHealth;
     }
 
+    private void FlipUI()
+    {
+        myTransform.Rotate(0, 180, 0);
+    }
+
     private void OnDisable()
     {
+        entity.onFlipped -= FlipUI;
         myStats.onHealthChanged -= UpdateHealthUI;
     }
 }

@@ -67,6 +67,8 @@ public class CharacterStats : MonoBehaviour
     public System.Action onHealthChanged;
     public bool isDead { get; private set; }
 
+    private bool isVulernable;
+
     protected virtual void Start()
     {
         critPower.SetDefaultValue(150);
@@ -98,6 +100,17 @@ public class CharacterStats : MonoBehaviour
             ApplyIgniteDamage();
 
 
+    }
+
+    public void MakeVulnerableFor(float _duration) => StartCoroutine(VulnerableCoroutine(_duration));
+
+    private IEnumerator VulnerableCoroutine(float _duration)
+    {
+        isVulernable = true;
+
+        yield return new WaitForSeconds(_duration);
+
+        isVulernable = false;
     }
 
     public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify)
@@ -337,6 +350,9 @@ public class CharacterStats : MonoBehaviour
 
     protected virtual void DecreaseHealthBy(int _damage)
     {
+        if (isVulernable)
+            _damage = Mathf.RoundToInt(_damage * 1.1f);
+
         currentHealth -= _damage;
 
         if (onHealthChanged != null)
@@ -349,7 +365,7 @@ public class CharacterStats : MonoBehaviour
     }
 
     #region Stat Calculations
-    private int CheckTargetArmor(CharacterStats _targetStats, int totalDamage)
+    protected int CheckTargetArmor(CharacterStats _targetStats, int totalDamage)
     {
         if (_targetStats.isChilled)
             totalDamage -= Mathf.RoundToInt(_targetStats.armor.GetValue() * .8f);
@@ -371,7 +387,7 @@ public class CharacterStats : MonoBehaviour
     {
 
     }
-    private bool TargetCanAvoidAttack(CharacterStats _targetStats)
+    protected bool TargetCanAvoidAttack(CharacterStats _targetStats)
     {
         int totalEvasion = _targetStats.evasion.GetValue() + _targetStats.agility.GetValue();
 
@@ -386,7 +402,7 @@ public class CharacterStats : MonoBehaviour
 
         return false;
     }
-    private bool CanCrit()
+    protected bool CanCrit()
     {
         int totalCriticalChance = critChance.GetValue() + agility.GetValue();
 
@@ -396,7 +412,7 @@ public class CharacterStats : MonoBehaviour
         }
         return false;
     }
-    private int CalculateCritDamage(int _damage)
+    protected int CalculateCritDamage(int _damage)
     {
         float totalCritPower = (critPower.GetValue() + strength.GetValue()) * .01f;
 
