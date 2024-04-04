@@ -16,7 +16,7 @@ public class UI_CraftSlot : UI_ItemSlot
 
         item.data = _data;
 
-        itemImage.sprite = _data.icon;
+        itemImage.sprite = _data.itemIcon;
         itemText.text = _data.itemName;
 
         if (itemText.text.Length > 12)

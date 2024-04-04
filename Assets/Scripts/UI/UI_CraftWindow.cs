@@ -29,7 +29,7 @@ public class UI_CraftWindow : MonoBehaviour
                 Debug.LogWarning("You have more materials than you have space!");
 
 
-            materialImage[i].sprite = _data.craftingMaterials[i].data.icon;
+            materialImage[i].sprite = _data.craftingMaterials[i].data.itemIcon;
             materialImage[i].color = Color.white;
 
             TextMeshProUGUI materialSlotText = materialImage[i].GetComponentInChildren <TextMeshProUGUI>();
@@ -38,7 +38,7 @@ public class UI_CraftWindow : MonoBehaviour
             materialImage[i].GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
         }
 
-        itemIcon.sprite = _data.icon;
+        itemIcon.sprite = _data.itemIcon;
         itemName.text = _data.itemName;
         itemDescription.text = _data.GetDescription();
 
