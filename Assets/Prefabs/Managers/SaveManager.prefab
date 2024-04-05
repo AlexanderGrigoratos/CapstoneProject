@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: data.grigoratos
-  encryptData: 0
+  encryptData: 1
