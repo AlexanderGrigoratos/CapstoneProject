@@ -34,14 +34,14 @@ public class Ui_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private void Start()
     {
         skillImage = GetComponent<Image>();
-        ui = GetComponentInParent<UI>();    
+        ui = GetComponentInParent<UI>();
 
         skillImage.color = lockedSkillColor;
 
         if (unlocked)
             skillImage.color = Color.white;
 
-        
+
     }
 
     public void UnlockSkillSlot()
@@ -59,7 +59,7 @@ public class Ui_SkillTreeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExi
             }
         }
 
-        for (int i = 0;i < shouldBeLocked.Length; i++)
+        for (int i = 0; i < shouldBeLocked.Length; i++)
         {
             if (shouldBeLocked[i].unlocked == true)
             {
