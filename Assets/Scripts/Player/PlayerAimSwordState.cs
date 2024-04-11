@@ -24,6 +24,8 @@ public class PlayerAimSwordState : PlayerState
 
         player.StartCoroutine("BusyFor", .2f);
 
+        AudioManager.instance.PlaySFX(28, player.transform);
+
 
     }
 

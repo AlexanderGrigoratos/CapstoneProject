@@ -1,32 +1,42 @@
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
-public class UI : MonoBehaviour
+public class UI : MonoBehaviour, ISaveManager
 {
-    [Header("End Screen")]
+    [Header("End screen")]
     [SerializeField] private UI_FadeScreen fadeScreen;
     [SerializeField] private GameObject endText;
     [SerializeField] private GameObject restartButton;
     [Space]
 
-    [SerializeField] private GameObject characterUI;
+    [SerializeField] private GameObject charcaterUI;
     [SerializeField] private GameObject skillTreeUI;
     [SerializeField] private GameObject craftUI;
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject inGameUI;
+
+
 
     public UI_SkillToolTip skillToolTip;
     public UI_ItemToolTip itemToolTip;
     public UI_StatToolTip statToolTip;
     public UI_CraftWindow craftWindow;
 
+    [SerializeField] private UI_VolumeSlider[] volumeSettings;
+
     private void Awake()
     {
-        SwitchTo(skillTreeUI); //hotfix for assigning events when the game starts and its switched off
+
+        SwitchTo(skillTreeUI);
+        fadeScreen.gameObject.SetActive(true);
     }
+
     void Start()
     {
-    
         SwitchTo(inGameUI);
 
         itemToolTip.gameObject.SetActive(false);
@@ -36,11 +46,13 @@ public class UI : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.C))
-            SwitchWithKeyTo(characterUI);
 
-        if (Input.GetKeyUp(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.C))
+            SwitchWithKeyTo(charcaterUI);
+
+        if (Input.GetKeyDown(KeyCode.B))
             SwitchWithKeyTo(craftUI);
+
 
         if (Input.GetKeyDown(KeyCode.K))
             SwitchWithKeyTo(skillTreeUI);
@@ -62,7 +74,10 @@ public class UI : MonoBehaviour
         }
 
         if (_menu != null)
+        {
+            AudioManager.instance.PlaySFX(7, null);
             _menu.SetActive(true);
+        }
     }
 
     public void SwitchWithKeyTo(GameObject _menu)
@@ -91,16 +106,39 @@ public class UI : MonoBehaviour
     public void SwitchOnEndScreen()
     {
         fadeScreen.FadeOut();
-        StartCoroutine(EndScreenCoroutine());
+        StartCoroutine(EndScreenCorutione());
     }
 
-    IEnumerator EndScreenCoroutine()
+    IEnumerator EndScreenCorutione()
     {
         yield return new WaitForSeconds(1);
         endText.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         restartButton.SetActive(true);
+
     }
 
     public void RestartGameButton() => GameManager.instance.RestartScene();
+
+    public void LoadData(GameData _data)
+    {
+        foreach (KeyValuePair<string, float> pair in _data.volumeSettings)
+        {
+            foreach (UI_VolumeSlider item in volumeSettings)
+            {
+                if (item.parameter == pair.Key)
+                    item.LoadSlider(pair.Value);
+            }
+        }
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.volumeSettings.Clear();
+
+        foreach (UI_VolumeSlider item in volumeSettings)
+        {
+            _data.volumeSettings.Add(item.parameter, item.slider.value);
+        }
+    }
 }

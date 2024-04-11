@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -31,7 +30,7 @@ public class Entity : MonoBehaviour
     [SerializeField] protected Transform wallCheck;
     [SerializeField] protected float wallCheckDistance;
     [SerializeField] protected LayerMask whatIsGround;
-    
+
 
 
     public int facingDir { get; private set; } = 1;
@@ -56,7 +55,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void Update()
     {
-        
+
     }
 
     public virtual void SlowEntityBy(float _slowPercentage, float _slowDuration)
@@ -74,7 +73,7 @@ public class Entity : MonoBehaviour
     protected virtual IEnumerator HitKnockBack()
     {
         isKnocked = true;
-        
+
         rb.velocity = new Vector2(knockbackDirection.x * -facingDir, knockbackDirection.y);
 
         yield return new WaitForSeconds(knockbackDuration);
@@ -119,11 +118,11 @@ public class Entity : MonoBehaviour
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
 
-        if(onFlipped != null)
+        if (onFlipped != null)
             onFlipped();
     }
 
-    
+
     public virtual void FlipController(float _x)
     {
         if (_x > 0 && !facingRight)

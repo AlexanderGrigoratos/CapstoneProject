@@ -29,6 +29,7 @@ public class ItemObject : MonoBehaviour
         if (!Inventory.instance.CanAddItem() && itemData.itemType == ItemType.Equipment)
             return;
 
+        AudioManager.instance.PlaySFX(18, transform);
         Inventory.instance.AddItem(itemData);
         Destroy(gameObject);
     }
